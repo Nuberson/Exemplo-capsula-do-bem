@@ -1,0 +1,51 @@
+import pygame
+pygame.init()
+x = 764
+y = 300
+a = 600
+b = 300
+pos_x = 193
+pos_y = 138
+velocidade = 5
+fundo = pygame.image.load('CIdade.png')
+drone = pygame.image.load('Drone_2.0.png')
+
+
+janela = pygame.display.set_mode((1300,710))
+pygame.display.set_caption("Exemplo caixa do bem")
+
+
+
+janela_aberta = True
+while janela_aberta :
+    pygame.time.delay(50)
+
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            janela_aberta = False
+
+#comandos
+
+    comandos = pygame.key.get_pressed()
+    if comandos[pygame.K_w]:
+        y -= velocidade
+    if comandos[pygame.K_s]:
+        y += velocidade
+    if comandos[pygame.K_a]:
+        x -= velocidade
+    if comandos[pygame.K_d]:
+        x += velocidade
+
+
+
+    janela.blit(fundo,(0,0))
+    janela.blit(drone,(x,y))
+    pygame.draw.circle(janela, (225, 0, 0), (193, 138), 50)
+    pygame.draw.circle(janela, (225, 0, 0), (634, 567), 50)
+    pygame.draw.circle(janela, (225, 0, 0), (1054, 650), 50)
+    pygame.draw.circle(janela, (225, 0, 0), (1000, 243), 50)
+
+
+    pygame.display.update()
+
+pygame.quit()
